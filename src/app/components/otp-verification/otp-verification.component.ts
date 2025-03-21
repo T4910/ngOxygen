@@ -12,14 +12,18 @@ import { SuccessComponentComponent } from "../success-component/success-componen
 export class OtpVerificationComponent {
   verified = signal<boolean>(false);
   loading = signal<boolean>(false);
+  active = signal(0);
   otp = signal<string[]>(Array(6).fill(''));
   formState = inject(FormStateService);
   email = this.formState.formData().customerInfo.email;
 
-  handleKeyDown(event: KeyboardEvent, index: number,) {
+  handleKeyDown(e: Event, index: number) {
     // if (e.key === 'Backspace' && !this.otp[index] && index > 0) {
     //   this.inputRefs[index - 1]?.focus();
     // }
+    console.log('aa', index, ((e.target as HTMLInputElement).nextElementSibling as HTMLInputElement)?.id);
+    ((e.target as HTMLInputElement).nextElementSibling as HTMLInputElement)?.focus();
+    this.active.set(index + 1);
   }
 
   handlePaste(e: ClipboardEvent) {

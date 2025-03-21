@@ -11,14 +11,15 @@
 
     <div class="flex justify-center space-x-2 mb-2">
       @for(index of [0, 1, 2, 3, 4, 5]; track $index){
-          <!-- (keyDown)="handleKeyDown()" -->
-          <input
+        <input
             type="text"
+            [id]="index"
+            (keyup)="handleKeyDown($event, index)"
             (paste)="index === 0 ? handlePaste($event) : undefined"
             class="w-12 h-12 border-2 border-gray-300 rounded text-center text-xl font-semibold"
             maxLength="1"
-          />
-          <!-- [auto-focus]="{{index === 0}}" -->
+            />
+            <!-- [style]="`auto-focus: ${index === active() ? 'true' : 'false'}`" -->
       }
     </div>
 
