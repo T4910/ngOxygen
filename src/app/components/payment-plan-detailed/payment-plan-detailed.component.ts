@@ -9,4 +9,5 @@ import { FormStateService } from '../../service/form-state.service';
 })
 export class PaymentPlanDetailedComponent {
   formStateService = inject(FormStateService);
+  data = this.formStateService.formData()
 }
