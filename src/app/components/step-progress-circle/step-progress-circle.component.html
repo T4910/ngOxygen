@@ -1,0 +1,27 @@
+<div class="relative size-4 inline-block">
+    <svg class="w-full h-full" viewBox="0 0 36 36">
+    <circle 
+        cx="18" 
+        cy="18" 
+        r="16" 
+        fill="none" 
+        stroke="#e6e6e6" 
+        stroke-width="4"
+    />
+    </svg>
+    
+    <!-- Progress circle (blue) - uses stroke-dasharray and stroke-dashoffset to create the progress effect -->
+    <svg class="absolute top-0 left-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
+    <circle 
+        cx="18" 
+        cy="18" 
+        r="16" 
+        fill="none" 
+        stroke="#304399" 
+        stroke-width="4"
+        stroke-dasharray="100.53" 
+        stroke-linecap="round"
+        [style]="`stroke-dashoffset: ${100.53 + ((100.53 * progress()) / 100)}`"
+    />
+    </svg>
+</div>

@@ -1,0 +1,32 @@
+  @if (recordingDone()) {
+    <app-video-review />
+  } @else {
+      <div class="w-full max-w-md mx-auto text-center">
+          @if (error()) {
+            <div class="text-red-600 mb-4">{{error()}}</div>
+            <!-- onClick={handleRecordingDone} -->
+            <button
+              class="text-blue-600 text-center w-full hover:underline"
+            >
+              Skip
+            </button>
+          } @else {
+            <video autoPlay class="w-full h-40 bg-black mb-4"></video>
+            <div class="">
+              <button (click)="handleRecordingDone()" class="size-12 bg-red-500 rounded-full"></button>
+            </div>
+            <div class="text-justify">
+              <p class="text-xs mb-1">
+                  I, "{{data.customerInfo.firstName || 'Isaac'}}, {{data.customerInfo.lastName || 'Onyeka'}}", 
+                  hereby accept the loan of "{{data.amount || 1000}} FOR {{data.duration || 1}} months", 
+                  with a monthly repayment of "{{data.duration || 1}}" naira from Oxygen dated "{{data.duration || 1}}".
+              </p>
+              <p class="text-xs">
+                  I agree to the terms and conditions communicated on the loan offer, that loan repayments, 
+                  liquidation payment will not be paid into any account apart from the companies account and 
+                  I AM NOT PAYING ANY AGENT.
+              </p>
+            </div>
+          }
+      </div>
+  }
